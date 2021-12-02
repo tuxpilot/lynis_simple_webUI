@@ -1,25 +1,28 @@
-- hosts: <your inventory group target here>
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars:
+    package_to_add: aha
+    package_to_add2: lynis
   tasks:
-    - name: Install lynis
-      become: yes
-      become_method: sudo
-      package:
-        name: lynis
-        state: present
     - name: Install aha
-      become: yes
-      become_method: sudo
       package:
         name: aha
         state: present
+
+    - name: Install lynis
+      package:
+        name: lynis
+        state: present
+
     - name: Ansible fact - ansible_date_time
       debug:
         var: ansible_date_time.date
+
     - name: Lynis audit system
-      become: yes
-      become_method: sudo
       shell: lynis audit system -Q | aha > /tmp/{{ansible_date_time.date}}@{{inventory_hostname}}.html
+
     - fetch:
         src: /tmp/{{ansible_date_time.date}}@{{inventory_hostname}}.html
-        dest: /var/www/lynis/repots/{{ansible_date_time.date}}@{{inventory_hostname}}.html
+        dest: /var/www/html/lynis/reports/{{ansible_date_time.date}}@{{inventory_hostname}}.html
         flat: yes
