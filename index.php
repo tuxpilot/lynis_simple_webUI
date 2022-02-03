@@ -1,6 +1,5 @@
 <html>
 	<head>
-
 		<title>LynisWebUI</title>
 		<link rel="stylesheet" type="text/css" href="index.css">
 		<link rel="icon" type="image/png" href="images/favicon.ico" />
@@ -26,7 +25,7 @@
 			</a>
 		</div>
 	</div>
-	<div id="leftstructure">&nbsp;</div>
+	<div id="leftstructure"><a href=index.php?page=search>Make a research</a><br></div>
 		<div id="rightstructure">&nbsp;</div>
 			<div id="middlestructure">
 
