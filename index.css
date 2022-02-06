@@ -95,7 +95,10 @@ tr.post_traitement_tr_header_blue{
 }
 
 
-
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
 
 
 #header{
@@ -138,6 +141,7 @@ tr.post_traitement_tr_header_blue{
 {
 	float: left;
 	width: 20%;
+	margin-left: 20px;
 }
 
 

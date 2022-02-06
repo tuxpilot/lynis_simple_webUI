@@ -1,7 +1,7 @@
 <?php
 
 	# we read the content of the report folder containing all the lynis reports already in html readable format
-	$folder_content = shell_exec('ls -1 '.$reports_folder.'/');
+	$folder_content = shell_exec('ls -1 '.$reports_folder.'/ | awk -F \'.html\' \'{ print $1 }\'');
 
 	# we split the content of each string which is the full name of the lynis report
 	$filename_to_split = explode(PHP_EOL, $folder_content);
@@ -17,18 +17,18 @@
 			<td style='width:20%'>&emsp;</td>
 			<td>&emsp;&emsp;<br></td>
 		</tr>";
-		
+
 	# for every report filename :
 	foreach($filename_to_split as $filename)
-	{	
-	   # we check if the line is not an empty one, 
+	{
+	   # we check if the line is not an empty one,
 	   if ($filename != "" )
-	   { 
+	   {
 		# we split the filename with the delimiter '@'  which is the delimiter between the name and the date
 		$split_of_filename = explode("@", $filename);
 		# we read the file and we retrieve the hardening index note of the lynis report
 		$check_report_score = shell_exec('grep -E -i "hardening.*index" '.$reports_folder.'/'.$filename.' | awk -F \':\' \'{$1=$2=""; print $0}\' | awk -F \'[\' \'{print $1}\'');
-		
+
 		# we put it all in the table for "human reading "
 		echo "
 		<tr style='border-bottom: 1px solid #ccc; line-height: 1.8em;'>
@@ -42,6 +42,6 @@
 	}
 
 
-	echo "</table>";			
-			
+	echo "</table>";
+
 ?>

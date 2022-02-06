@@ -25,9 +25,11 @@
 			</a>
 		</div>
 	</div>
-	<div id="leftstructure"><a href=index.php?page=search>Make a research</a><br></div>
-		<div id="rightstructure">&nbsp;</div>
-			<div id="middlestructure">
+	<div id="leftstructure">
+		<br><a href=index.php?page=search><img src='images/search.png' height='40px'> Make a research</a><br>
+	</div>
+	<div id="rightstructure">&nbsp;</div>
+	<div id="middlestructure">
 
 				<?php
 
