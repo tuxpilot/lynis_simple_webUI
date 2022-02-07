@@ -10,6 +10,6 @@
 	
 
 	# we read the content of the selected report
-$reportfile = file_get_contents($reports_folder.'/'.$report_name);
+$reportfile = file_get_contents($reports_folder.'/'.$report_name.'.html');
 echo $reportfile;
 ?>
