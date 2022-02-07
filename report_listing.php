@@ -1,7 +1,7 @@
 <?php
 
 	# we read the content of the report folder containing all the lynis reports already in html readable format
-	$folder_content = shell_exec('ls -1 '.$reports_folder.'/ | awk -F \'.html\' \'{ print $1 }\'');
+	$folder_content = shell_exec('ls -1 '.$reports_folder.'/.html | awk -F \'.html\' \'{ print $1 }\'');
 
 	# we split the content of each string which is the full name of the lynis report
 	$filename_to_split = explode(PHP_EOL, $folder_content);
